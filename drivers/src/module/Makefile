@@ -28,7 +28,7 @@ EXTRA_CFLAGS += -Wall
 ### TARGET - all
 all:
 	$(MAKE) -C $(KDIR) M=$$PWD modules
-	mkdir ../bin
+	mkdir -p ../bin
 	cp $(KDRIVER_NAME).ko ../bin/
 
 ### TARGET - info
