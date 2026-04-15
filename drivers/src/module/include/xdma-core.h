@@ -186,14 +186,14 @@
 
 /* disable debugging */
 #if (XDMA_DEBUG == 0)
-#define dbg_desc(...)
-#define dbg_io(...)
-#define dbg_fops(...)
-#define dbg_perf(fmt, ...)
-#define dbg_sg(...)
-#define dbg_tfr(...)
-#define dbg_irq(...)
-#define dbg_init(...)
+#define dbg_desc(...)      do { } while(0)
+#define dbg_io(...)        do { } while(0)
+#define dbg_fops(...)      do { } while(0)
+#define dbg_perf(fmt, ...) do { } while(0)
+#define dbg_sg(...)        do { } while(0)
+#define dbg_tfr(...)       do { } while(0)
+#define dbg_irq(...)       do { } while(0)
+#define dbg_init(...)      do { } while(0)
 
 #else
 /* descriptor, ioread/write, scatter-gather, transfer debugging */
