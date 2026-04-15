@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Easy Quantis GUI
+Comment=Quantis RNG libraries and EasyQuantis application to use the IDQ Quantis QRNG HW device.
+Icon=easyquantis_64x64.png
+Exec=EasyQuantis
+Terminal=false
+Categories=Utility;
+StartupNotify=true
