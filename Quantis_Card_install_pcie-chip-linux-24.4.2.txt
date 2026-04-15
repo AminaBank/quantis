@@ -1,0 +1,193 @@
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ATTEMPTING TO INSTALL RPM ON ORACLE LINUX 10.1 KERNEL 6.12
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+rpm -i drivers/rpm/pcie-chip-unix-dkms-24.4-2.el9.x86_64.rpm
+        package pcie-chip-unix-dkms-24.4-2.el9.x86_64 is already installed
+[root@qrngsrv pcie-chip-linux-24.4.2]# rpm --reinstall drivers/rpm/pcie-chip-unix-dkms-24.4-2.el9.x86_64.rpm
+[post]:
+/var/tmp/rpm-tmp.Nwmho9: line 2: status: command not found
+0
+Deprecated feature: REMAKE_INITRD (/var/lib/dkms/pcie-chip-unix-dkms/24.4/source/dkms.conf)
+Sign command: /lib/modules/6.12.0-200.74.27.2.el10uek.x86_64/build/scripts/sign-file
+Signing key: /var/lib/dkms/mok.key
+Public certificate (MOK): /var/lib/dkms/mok.pub
+
+Building module(s)...(bad exit status: 2)
+Failed command:
+make -j12 KERNELRELEASE=6.12.0-200.74.27.2.el10uek.x86_64 -C /lib/modules/6.12.0-200.74.27.2.el10uek.x86_64/build M=/var/lib/dkms/pcie-chip-unix-dkms/24.4/build
+
+Error! Bad return status for module build on kernel: 6.12.0-200.74.27.2.el10uek.x86_64 (x86_64)
+Consult /var/lib/dkms/pcie-chip-unix-dkms/24.4/build/make.log for more information.
+Deprecated feature: REMAKE_INITRD (/var/lib/dkms/pcie-chip-unix-dkms/24.4/source/dkms.conf)
+Sign command: /lib/modules/6.12.0-200.74.27.2.el10uek.x86_64/build/scripts/sign-file
+Signing key: /var/lib/dkms/mok.key
+Public certificate (MOK): /var/lib/dkms/mok.pub
+
+Building module(s)...(bad exit status: 2)
+Failed command:
+make -j12 KERNELRELEASE=6.12.0-200.74.27.2.el10uek.x86_64 -C /lib/modules/6.12.0-200.74.27.2.el10uek.x86_64/build M=/var/lib/dkms/pcie-chip-unix-dkms/24.4/build
+
+Error! Bad return status for module build on kernel: 6.12.0-200.74.27.2.el10uek.x86_64 (x86_64)
+Consult /var/lib/dkms/pcie-chip-unix-dkms/24.4/build/make.log for more information.
+----------------------------------------------
+|                                            |
+|  IMPORTANT: To access the resource,        |
+|  please add root to the group your_group. |
+|                                            |
+----------------------------------------------
+[preun]:
+Module pcie-chip-unix-dkms/24.4 for kernel 6.12.0-124.45.1.el10_1.x86_64 (x86_64):
+Before uninstall, this module version was ACTIVE on this kernel.
+Deleting /lib/modules/6.12.0-124.45.1.el10_1.x86_64/extra/quantis-chip-pcie.ko.xz
+Running depmod.... done.
+
+Module pcie-chip-unix-dkms/24.4 for kernel 6.12.0-124.49.1.el10_1.x86_64 (x86_64):
+Before uninstall, this module version was ACTIVE on this kernel.
+Deleting /lib/modules/6.12.0-124.49.1.el10_1.x86_64/extra/quantis-chip-pcie.ko.xz
+Running depmod.... done.
+
+Deleting module pcie-chip-unix-dkms/24.4 completely from the DKMS tree.
+Executing post-transaction command................................. done.
+[root@qrngsrv pcie-chip-linux-24.4.2]# ls -la /dev/qrandom*
+ls: cannot access '/dev/qrandom*': No such file or directory
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ATTEMPTING TO BUILD ON ORACLE LINUX 10.1 KERNEL 6.12.0-200.74
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+kernel -> 6.12.0-200.74.27.2.el10uek.x86_64   (gives errors on braces - deprecated since prior which gave warnings?)
+
+# make
+make -C module
+make[1]: Entering directory '/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module'
+make -C /lib/modules/6.12.0-200.74.27.2.el10uek.x86_64/build M=$PWD modules
+make[2]: Entering directory '/usr/src/kernels/6.12.0-200.74.27.2.el10uek.x86_64'
+  CC [M]  /home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/idq-rng.o
+  CC [M]  /home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.o
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c: In function ‘engine_cyclic_stop’:
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c:580:55: error: suggest braces around empty body in an ‘else’ statement [-Werror=empty-body]
+  580 |                                          engine->name);
+      |                                                       ^
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c: In function ‘engine_err_handle’:
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c:990:46: error: suggest braces around empty body in an ‘if’ statement [-Werror=empty-body]
+  990 |                                 engine->name);
+      |                                              ^
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c: In function ‘engine_service_final_transfer’:
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c:1029:46: error: suggest braces around empty body in an ‘if’ statement [-Werror=empty-body]
+ 1029 |                                 engine->name);
+      |                                              ^
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c: In function ‘transfer_monitor’:
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c:2842:69: error: suggest braces around empty body in an ‘if’ statement [-Werror=empty-body]
+ 2842 |                         dbg_tfr("wait_event_interruptible=%d\n", rc);
+      |                                                                     ^
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c: In function ‘char_sgdma_read_write’:
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c:2990:75: error: suggest braces around empty body in an ‘else’ statement [-Werror=empty-body]
+ 2990 |                         dbg_tfr("FAILURE: Cannot read from H2C engine.\n");
+      |                                                                           ^
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c: In function ‘probe_scan_for_msi’:
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c:3935:78: error: suggest braces around empty body in an ‘if’ statement [-Werror=empty-body]
+ 3935 |                         dbg_init("Couldn't enable MSI-X mode: rc = %d\n", rc);
+      |                                                                              ^
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c:3943:76: error: suggest braces around empty body in an ‘if’ statement [-Werror=empty-body]
+ 3943 |                         dbg_init("Couldn't enable MSI mode: rc = %d\n", rc);
+      |                                                                            ^
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c: In function ‘irq_setup’:
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c:4154:77: error: suggest braces around empty body in an ‘else’ statement [-Werror=empty-body]
+ 4154 |                         dbg_init("Using IRQ#%d with 0x%p\n", pdev->irq, lro);
+      |                                                                             ^
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c: In function ‘probe_for_engine’:
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c:4274:75: error: suggest braces around empty body in an ‘else’ statement [-Werror=empty-body]
+ 4274 |                 dbg_init("Found C2H %d AXI engine at %p\n", channel, regs);
+      |                                                                           ^
+cc1: all warnings being treated as errors
+make[4]: *** [scripts/Makefile.build:229: /home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.o] Error 1
+make[3]: *** [/usr/src/kernels/6.12.0-200.74.27.2.el10uek.x86_64/Makefile:1961: /home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module] Error 2
+make[2]: *** [Makefile:226: __sub-make] Error 2
+make[2]: Leaving directory '/usr/src/kernels/6.12.0-200.74.27.2.el10uek.x86_64'
+make[1]: *** [Makefile:30: all] Error 2
+make[1]: Leaving directory '/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module'
+make: *** [Makefile:4: all] Error 2
+[root@qrngsrv src]# modprobe quantis_pci
+modprobe: FATAL: Module quantis_pci not found in directory /lib/modules/6.12.0-200.74.27.2.el10uek.x86_64
+[root@qrngsrv src]# ls -la /lib/modules
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+TTEMPTING TO BUILD ON ORACLE LINUX 10.1 KERNEL 6.12.0-124.49
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+kernel -> 6.12.0-124.49.1.el10_1.x86_64    (gives warnings on braces)
+
+uname -a
+Linux qrngsrv 6.12.0-124.49.1.el10_1.x86_64 #1 SMP PREEMPT_DYNAMIC Tue Apr  7 06:51:09 PDT 2026 x86_64 GNU/Linux
+
+[root@qrngsrv modules]#
+[root@qrngsrv modules]# cd /home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/
+[root@qrngsrv src]# make
+make -C module
+make[1]: Entering directory '/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module'
+make -C /lib/modules/6.12.0-124.49.1.el10_1.x86_64/build M=$PWD modules
+make[2]: Entering directory '/usr/src/kernels/6.12.0-124.49.1.el10_1.x86_64'
+  CC [M]  /home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/idq-rng.o
+  CC [M]  /home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.o
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c: In function ‘engine_cyclic_stop’:
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c:580:55: warning: suggest braces around empty body in an ‘else’ statement [-Wempty-body]
+  580 |                                          engine->name);
+      |                                                       ^
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c: In function ‘engine_err_handle’:
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c:990:46: warning: suggest braces around empty body in an ‘if’ statement [-Wempty-body]
+  990 |                                 engine->name);
+      |                                              ^
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c: In function ‘engine_service_final_transfer’:
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c:1029:46: warning: suggest braces around empty body in an ‘if’ statement [-Wempty-body]
+ 1029 |                                 engine->name);
+      |                                              ^
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c: In function ‘transfer_monitor’:
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c:2842:69: warning: suggest braces around empty body in an ‘if’ statement [-Wempty-body]
+ 2842 |                         dbg_tfr("wait_event_interruptible=%d\n", rc);
+      |                                                                     ^
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c: In function ‘char_sgdma_read_write’:
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c:2990:75: warning: suggest braces around empty body in an ‘else’ statement [-Wempty-body]
+ 2990 |                         dbg_tfr("FAILURE: Cannot read from H2C engine.\n");
+      |                                                                           ^
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c: In function ‘probe_scan_for_msi’:
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c:3935:78: warning: suggest braces around empty body in an ‘if’ statement [-Wempty-body]
+ 3935 |                         dbg_init("Couldn't enable MSI-X mode: rc = %d\n", rc);
+      |                                                                              ^
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c:3943:76: warning: suggest braces around empty body in an ‘if’ statement [-Wempty-body]
+ 3943 |                         dbg_init("Couldn't enable MSI mode: rc = %d\n", rc);
+      |                                                                            ^
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c: In function ‘irq_setup’:
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c:4154:77: warning: suggest braces around empty body in an ‘else’ statement [-Wempty-body]
+ 4154 |                         dbg_init("Using IRQ#%d with 0x%p\n", pdev->irq, lro);
+      |                                                                             ^
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c: In function ‘probe_for_engine’:
+/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-core.c:4274:75: warning: suggest braces around empty body in an ‘else’ statement [-Wempty-body]
+ 4274 |                 dbg_init("Found C2H %d AXI engine at %p\n", channel, regs);
+      |                                                                           ^
+  CC [M]  /home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/xdma-sgm.o
+  LD [M]  /home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/quantis-chip-pcie.o
+  MODPOST /home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/Module.symvers
+  CC [M]  /home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/quantis-chip-pcie.mod.o
+  CC [M]  /home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/.module-common.o
+  LD [M]  /home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/quantis-chip-pcie.ko
+  BTF [M] /home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/quantis-chip-pcie.ko
+Skipping BTF generation for /home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module/quantis-chip-pcie.ko due to unavailability of vmlinux
+make[2]: Leaving directory '/usr/src/kernels/6.12.0-124.49.1.el10_1.x86_64'
+mkdir ../bin
+cp quantis-chip-pcie.ko ../bin/
+make[1]: Leaving directory '/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module'
+
+[root@qrngsrv src]# make install
+make -C module install
+make[1]: Entering directory '/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module'
+make -C /lib/modules/6.12.0-124.49.1.el10_1.x86_64/build M=$PWD modules
+make[2]: Entering directory '/usr/src/kernels/6.12.0-124.49.1.el10_1.x86_64'
+make[2]: Leaving directory '/usr/src/kernels/6.12.0-124.49.1.el10_1.x86_64'
+mkdir ../bin
+mkdir: cannot create directory ‘../bin’: File exists
+make[1]: *** [Makefile:31: all] Error 1
+make[1]: Leaving directory '/home/geoffc/Downloads/pcie-chip-linux-24.4.2/drivers/src/module'
+make: *** [Makefile:7: install] Error 2
+
