@@ -928,3 +928,4 @@ char *QuantisFullStrError(QuantisDeviceType deviceType, QuantisError errorNumber
 
   return (char *)msg;
 }
+

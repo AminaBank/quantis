@@ -191,7 +191,7 @@ include(QuantisPackages)
 
 # Quantis library
 add_subdirectory(Quantis)
-add_subdirectory(QuantisExtensions)
+#add_subdirectory(QuantisExtensions)
 
 # EasyQuantis application
 if(NOT DISABLE_EASYQUANTIS)

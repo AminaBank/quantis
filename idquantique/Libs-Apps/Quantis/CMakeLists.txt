@@ -28,9 +28,9 @@ endif()
 set(QuantisBase_SRCS
   Conversion.c
   Quantis_C.c
-  Quantis_Cpp.cpp
+#  Quantis_Cpp.cpp
 #  Quantis_Java.cpp
-  Quantis_random_device.cpp
+#  Quantis_random_device.cpp
 )
 
 set(Public_Headers
@@ -70,7 +70,7 @@ endif()
 ### Quantis-NoHardware
 set(QuantisNoHw_SRCS
   ${QuantisBase_SRCS}
-  Quantis_NoHardware.c
+  #Quantis_NoHardware.c
 )
 
 ### Quantis-Compat

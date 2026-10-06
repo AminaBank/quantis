@@ -19,8 +19,8 @@ fn main() {
 
     #[allow(clippy::wildcard_in_or_patterns)]
     let easy_quantis_opt = match os_type::current_platform().os_type {
-        os_type::OSType::Debian | os_type::OSType::Ubuntu => "-DDISABLE_EASYQUANTIS=0",
-        os_type::OSType::Alpine | _ => "-DDISABLE_EASYQUANTIS=1",
+        os_type::OSType::Ubuntu => "-DDISABLE_EASYQUANTIS=0",
+        os_type::OSType::Debian | os_type::OSType::Alpine | _ => "-DDISABLE_EASYQUANTIS=1",
     };
 
     let cmdres = std::process::Command::new("cmake")
