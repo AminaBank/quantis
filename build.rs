@@ -17,12 +17,6 @@ fn main() {
     std::fs::create_dir_all(&builddir).unwrap();
     let cmakemodules = libdir_path.parent().unwrap().join("CMake");
 
-    #[allow(clippy::wildcard_in_or_patterns)]
-    let easy_quantis_opt = match os_type::current_platform().os_type {
-        os_type::OSType::Ubuntu => "-DDISABLE_EASYQUANTIS=0",
-        os_type::OSType::Debian | os_type::OSType::Alpine | _ => "-DDISABLE_EASYQUANTIS=1",
-    };
-
     let cmdres = std::process::Command::new("cmake")
         .current_dir(&builddir)
         .arg(format!(
@@ -31,7 +25,7 @@ fn main() {
         ))
         .arg("-DDISABLE_QUANTIS_JAVA=1")
         .arg("-DDISABLE_QUANTIS_PCI=1")
-        .arg(easy_quantis_opt)
+        .arg("-DDISABLE_EASYQUANTIS=1")
         .arg("-DDISABLE_EASYQUANTIS_GUI=1")
         .arg("-DUSE_CXX11=1")
         .arg("-DCMAKE_BUILD_TYPE=Release")
@@ -73,10 +67,7 @@ fn main() {
 
     // Tell cargo to look for libraries in the specified directory
     let dir = env::var("CARGO_MANIFEST_DIR").unwrap();
-    println!(
-        "cargo:rustc-link-search={}/idquantique/Libs-Apps/{}/Quantis",
-        dir, buildname
-    );
+    println!("cargo:rustc-link-search={dir}/idquantique/Libs-Apps/{buildname}/Quantis");
 
     // Tell cargo to tell rustc to link the library.
     // println!("cargo:rustc-link-lib=libQuantis");

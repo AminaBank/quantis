@@ -4,7 +4,7 @@
 #![allow(dead_code)]
 include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
 
-use std::ffi::{CStr, c_void};
+use std::ffi::{c_void, CStr};
 use thiserror::Error;
 
 pub struct Quantis {
