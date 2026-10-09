@@ -1,0 +1,29 @@
+[package]
+name = "quantis"
+description = "Wrapper around the C lib that communicates with the idquantique QRNG device"
+keywords = ["random", "wrapper", "quantum", "cold storage", "custody"]
+categories = ["cryptography::cryptocurrencies"]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.76"
+license = "Proprietary"
+repository = "https://github.com/AminaBank/quantis"
+exclude = []
+
+[dependencies]
+thiserror = "2"
+
+[dev-dependencies]
+rstest = "^0.26"
+temp-dir = "0.2"
+
+[features]
+
+[build-dependencies]
+bindgen = "0.72"
+os_type = "2.6"
+in-container = "1"
+
+[[bin]]
+name = "qrng"
+path = "src/bin/qrng.rs"
